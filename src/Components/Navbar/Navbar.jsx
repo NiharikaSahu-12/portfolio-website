@@ -6,7 +6,8 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-stone-900 bg-opacity-50 backdrop-blur-sm flex justify-between items-center text-white px-6 py-6 md:px-20 z-50">
-      <span className="text-xl font-bold tracking-wide">PORTFOLIO</span>
+      <span className="text-xl font-bold tracking-wide">
+        <a a href="#" onClick={()=> setMenuOpen(false)}>PORTFOLIO</a></span>
 
       <ul
         className={`${

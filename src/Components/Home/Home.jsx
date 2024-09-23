@@ -8,10 +8,10 @@ export default function Home() {
     <div className="text-white flex flex-col md:flex-row w-full justify-between items-center p-4 md:p-20 pt-24 md:pt-32">
       <div className="md:w-2/4 md:pt-10 text-center md:text-left">
         <h1 className="text-3xl md:text-6xl font-bold flex flex-col md:flex-row leading-normal tracking-tighter mb-4">
-          <TextChange />
+         Hey, I'm Niharika Sahu!
         </h1>
         <h2 className="text-xl md:text-3xl font-semibold text-[#465697] mb-4">
-          Frontend Developer & UI/UX Enthusiast
+        <TextChange />
         </h2>
         <p className="text-sm md:text-xl tracking-tight mt-4 mb-6">
           Passionate about crafting beautiful, responsive, and user-friendly web experiences. 
