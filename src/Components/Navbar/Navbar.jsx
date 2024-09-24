@@ -39,7 +39,7 @@ export default function Navbar() {
   </a>
 </li>
 <li className="text-md p-2 md:p-0 relative">
-  <a href="#Footer" onClick={() => setMenuOpen(false)} className="hover:text-[#465697] transition-colors relative inline-block">
+  <a href="#Contact" onClick={() => setMenuOpen(false)} className="hover:text-[#465697] transition-colors relative inline-block">
     Contact
     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#465697] transition-all duration-300 ease-out group-hover:w-full"></span>
   </a>

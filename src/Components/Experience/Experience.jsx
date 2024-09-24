@@ -1,78 +1,44 @@
 import React from "react";
-import { FaCss3, FaFigma, FaHtml5, FaJs, FaReact } from "react-icons/fa";
-import { SiRedis } from "react-icons/si";
-import { FaGoogle } from "react-icons/fa";
-import { SiMongodb } from "react-icons/si";
-import { RiNetflixFill } from "react-icons/ri";
-import { FaAmazon } from "react-icons/fa";
+import Allora_logo from "../../assets/allora.png";
+import Artronaut_logo from "../../assets/atronaut.png";
+
 const Experience = () => {
   return (
     <div id="Experience" className="p-10 md:p-24">
       <h1 className="text-2xl md:text-4xl text-white font-bold">Experience</h1>
       <div className="flex flex-wrap items-center justify-around">
-        <div className="flex flex-wrap md:w-2/5 gap-8 md:p-12 py-10">
-          <span className="p-3 bg-zinc-950 flex items-center rounded-2xl">
-            <FaHtml5 color="#E34F26" size={50} />
-          </span>
-          <span className="p-3 bg-zinc-950 flex items-center rounded-2xl">
-            <FaCss3 color="#1572B6" size={50} />
-          </span>
-          <span className="p-3 bg-zinc-950 flex items-center rounded-2xl">
-            <FaReact color="#61DAFB" size={50} />
-          </span>
-          <span className="p-3 bg-zinc-950 flex items-center rounded-2xl">
-            <FaJs color="#F7DF1E" size={50} />
-          </span>
-          <span className="p-3 bg-zinc-950 flex items-center rounded-2xl">
-            <FaFigma color="#F24E1E" size={50} />
-          </span>
-          <span className="p-3 bg-zinc-950 flex items-center rounded-2xl">
-            <SiMongodb color="#47A248" size={50} />
-          </span>
-          <span className="p-3 bg-zinc-950 flex items-center rounded-2xl">
-            <SiRedis color="#FF4438" size={50} />
+        <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-6 rounded-2xl p-4 items-center">
+          <img src={Allora_logo} alt="Allorasoft Logo" className="w-12 h-12" />
+          <span className="text-white">
+            <h2 className="leading-tight">Frontend Developer, Allorasoft Pvt. Ltd</h2>
+            <p className="text-sm leading-tight font-thin">
+              Oct 2023 - Present
+            </p>
+            <ul className="list-disc list-inside text-sm p-10">
+              <li>
+                Developed and maintained responsive web applications using React.js and Tailwind CSS, resulting in a 25% increase in user engagement.
+              </li>
+              <li>Optimized application performance, improving load times by 40%</li>
+              <li>
+                Integrated RESTful APIs to fetch and display dynamic content from MongoDB and MySQL databases
+              </li>
+              <li>Actively participated in code reviews, providing constructive feedback to improve team code quality</li>
+              <li>Participated in daily stand-up meetings and weekly sprint planning sessions</li>
+            </ul>
           </span>
         </div>
-        <div>
-          <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-4 rounded-lg p-4 items-center">
-            <FaGoogle color="#4285F4" size={50} />
-            <span className="text-white">
-              <h2 className="leading-tight">Software Engineer , Google</h2>
-              <p className="text-sm leading-tight font-thin">
-                Sept 2023 - Present
-              </p>
-              <ul className="text-sm p-2">
-                <li>- Work as software developer</li>
-                <li>- Senior SDE-developer</li>
-              </ul>
-            </span>
-          </div>
-          <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-4 rounded-lg  p-4 items-center">
-            <RiNetflixFill color="#E50914" size={50} />
-            <span className="text-white">
-              <h2 className="leading-tight">Software Engineer, Google</h2>
-              <p className="text-sm leading-tight font-thin">
-                Sept 2023 - Present
-              </p>
-              <ul className="text-sm p-2">
-                <li>- Work as software developer.</li>
-                <li>- Senior SDE-developer</li>
-              </ul>
-            </span>
-          </div>
-          <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-4 rounded-lg  p-4 items-center">
-            <FaAmazon color="#FF9900" size={50} />
-            <span className="text-white">
-              <h2 className="leading-tight">Software Engineer, Google</h2>
-              <p className="text-sm leading-tight font-thin">
-                Sept 2023 - Present
-              </p>
-              <ul className="text-sm p-2">
-                <li>- Work as software developer.</li>
-                <li>- Senior SDE-developer</li>
-              </ul>
-            </span>
-          </div>
+
+        <div className="flex gap-10 bg-slate-950 bg-opacity-45 mt-6 rounded-2xl p-4 items-center">
+          <img src={Artronaut_logo} alt="Artronaut Logo" className="w-20 h-20 mx-2" />
+          <span className="text-white">
+            <h2 className="leading-tight">Frontend Developer Intern, Artronaut Creatives</h2>
+            <p className="text-sm leading-tight font-thin">Feb 2023 - April 2023</p>
+            <ul className="list-disc list-inside text-sm p-10">
+              <li>Assisted in developing and maintaining responsive web pages using HTML5, CSS3, and JavaScript.</li>
+              <li>Collaborated with senior developers to implement new features for the company's main product</li>
+              <li>Gained hands-on experience with different frameworks and executed it in projects</li>
+            </ul>
+          </span>
         </div>
       </div>
     </div>

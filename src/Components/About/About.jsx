@@ -21,15 +21,14 @@ const About = () => {
                   Frontend developer
                 </h1>
                 <p className="text-sm md:text-md leading-tight">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Maiores explicabo deserunt asperiores quasi, vitae blanditiis
-                  perferendis quos consectetur ea harum! Libero aut qui
-                  similique recusandae provident consectetur sed itaque alias
-                  sint ipsa?
+                As a highly skilled Frontend Developer with 1+ years of experience, I am proficient in HTML, CSS, and JavaScript. My ability to 
+                create visually appealing and user-friendly websites has led to successful collaborations with clients across various industries. With 
+                a strong attention to detail and problem-solving skills, I am constantly seeking new challenges to enhance my expertise. Let me 
+                bring my passion for creating seamless online experiences to your team.
                 </p>
               </span>
             </div>
-            <div className="flex gap-3 py-4">
+            {/* <div className="flex gap-3 py-4">
               <IoArrowForward size={30} className="mt-1" />
 
               <span className="w-96">
@@ -55,7 +54,7 @@ const About = () => {
                   perferendis
                 </p>
               </span>
-            </div>
+            </div> */}
           </ul>
         </div>
       </div>

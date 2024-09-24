@@ -25,7 +25,7 @@ export default function Home() {
           ))}
         </div>
         <div className="flex gap-4 justify-center md:justify-start">
-          <button className="mt-5 md:mt-10 text-white py-2 px-4 text-sm md:text-lg hover:opacity-85 duration-300 hover:scale-105 font-semibold rounded-3xl bg-[#465697]">
+          <button className="mt-5 md:mt-10 text-white py-2 px-4 text-sm md:text-lg hover:opacity-85 duration-300 hover:shadow-lg hover:-translate-y-1 font-semibold rounded-3xl bg-[#465697]">
             View Resume
           </button>
           {/* <button className="mt-5 md:mt-10 text-[#465697] py-2 px-4 text-sm md:text-lg hover:bg-[#465697] hover:text-white duration-300 hover:scale-105 font-semibold rounded-3xl border-2 border-[#465697]">
@@ -33,23 +33,24 @@ export default function Home() {
           </button> */}
         </div>
         <div className="flex justify-center md:justify-start gap-8 py-10">
-          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-950 flex items-center justify-center rounded-2xl hover:opacity-85 duration-300 hover:scale-105">
+          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-950 flex items-center justify-center rounded-2xl hover:opacity-85 duration-300 hover:shadow-lg hover:-translate-y-1">
             <FaLinkedin color="#0A66C2" size={30} />
           </a>
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-950 flex items-center justify-center rounded-2xl hover:opacity-85 duration-300 hover:scale-105">
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-950 flex items-center justify-center rounded-2xl hover:opacity-85 duration-300 hover:shadow-lg hover:-translate-y-1">
             <FaGithub color="#FFFFFF" size={30} />
           </a>
-          <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-950 flex items-center justify-center rounded-2xl hover:opacity-85 duration-300 hover:scale-105">
+          <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" className="p-2 bg-zinc-950 flex items-center justify-center rounded-2xl hover:opacity-85 duration-300 hover:shadow-lg hover:-translate-y-1">
             <FaInstagram color="#E4405F" size={30} />
           </a>
         </div>
       </div>
       <div className="mt-8 md:mt-0 relative">
-        <img className="max-w-full h-auto rounded-full border-4 border-[#465697]" src={avatarImg} alt="Avatar" />
-        {/* <div className="absolute bottom-4 right-4 bg-[#465697] text-white py-2 px-4 rounded-full text-sm font-semibold">
-          Open to Work
-        </div> */}
-      </div>
+  <img 
+    className="max-w-full h-auto rounded-full border-4 border-[#465697] shadow-lg transition-all duration-300 hover:shadow-2xl shadow-[#465697] glow-effect" 
+    src={avatarImg} 
+    alt="Avatar" 
+  />
+</div>
     </div>
   );
 }
