@@ -1,5 +1,5 @@
 import React from "react";
-import avatarImg from "../../assets/7358602-removebg-preview.png";
+import avatarImg from "../../assets/home.png";
 import TextChange from "../TextChange";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 

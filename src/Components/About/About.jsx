@@ -1,6 +1,6 @@
 import React from "react";
 import { IoArrowForward } from "react-icons/io5";
-import AboutImg from "../../assets/7358653-removebg-preview.png";
+import AboutImg from "../../assets/about.png";
 
 const About = () => {
   return (
