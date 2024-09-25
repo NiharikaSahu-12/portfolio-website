@@ -17,18 +17,18 @@ const Experience = () => {
             "Optimized application performance, improving load times by 40%",
             "Integrated RESTful APIs to fetch and display dynamic content from MongoDB and MySQL databases",
             "Actively participated in code reviews, providing constructive feedback to improve team code quality",
-            "Participated in daily stand-up meetings and weekly sprint planning sessions"
+            "Participated in daily stand-up meetings and weekly sprint planning sessions",
           ]}
         />
         <ExperienceCard
           logo={Artronaut_logo}
           alt="Artronaut Logo"
-          title="Frontend Developer Intern, Artronaut Creatives"
+          title="Frontend Developer Intern, Artronaut Creatives LLP"
           date="Feb 2023 - April 2023"
           responsibilities={[
             "Assisted in developing and maintaining responsive web pages using HTML5, CSS3, and JavaScript.",
             "Collaborated with senior developers to implement new features for the company's main product",
-            "Gained hands-on experience with different frameworks and executed it in projects"
+            "Gained hands-on experience with different frameworks and executed it in projects",
           ]}
         />
       </div>
@@ -38,7 +38,7 @@ const Experience = () => {
 
 const ExperienceCard = ({ logo, alt, title, date, responsibilities }) => {
   return (
-    <div className="flex-1 bg-slate-950 bg-opacity-45 rounded-2xl p-6 flex flex-col">
+    <div className="flex-1 bg-slate-950 bg-opacity-45 rounded-2xl p-6 flex flex-col shadow-lg shadow-slate-800">
       <div className="flex items-center mb-4">
         <img src={logo} alt={alt} className="w-16 h-16 object-contain mr-4" />
         <div>
@@ -56,5 +56,3 @@ const ExperienceCard = ({ logo, alt, title, date, responsibilities }) => {
 };
 
 export default Experience;
-
-
