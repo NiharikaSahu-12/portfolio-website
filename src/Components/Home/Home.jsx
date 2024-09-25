@@ -15,7 +15,7 @@ export default function Home() {
         </h2>
         <p className="text-sm md:text-xl tracking-tight mt-4 mb-6">
           Passionate about crafting beautiful, responsive, and user-friendly web experiences. 
-          Currently expanding my skills in the MERN stack to build full-stack applications.
+          Always eager to discover new technologies, I quickly adapt and thrive, constantly expanding my expertise.
         </p>
         <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
           {["React", "JavaScript", "HTML5", "CSS3", "Tailwind", "Node.js"].map((skill) => (
