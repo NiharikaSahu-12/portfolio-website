@@ -33,7 +33,7 @@ export default function Skills() {
   ];
 
   return (
-    <section id="Skills" className="bg-slate-900 text-white pt-24 pb-24 px-4">
+    <section id="Skills" className="bg-slate-900 text-white pt-24 pb-24 px-4 min-h-screen">
       <div className="max-w-6xl mx-auto w-full">
         <h2 className="text-3xl md:text-5xl font-bold mb-8 text-center">Skills & Technologies</h2>
         <div className="space-y-12">

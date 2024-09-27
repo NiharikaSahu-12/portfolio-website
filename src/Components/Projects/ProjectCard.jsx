@@ -1,23 +1,56 @@
-import React from "react";
-import bannerImg from "../../assets/photo-C8q0KQHG.webp";
-const ProjectCard = ({ title, main }) => {
-  return (
-    <div className="p-3 md:p-6 flex flex-col w-80 bg-[#0c0e19] shadow-xl shadow-slate-900 rounded-2xl">
-      <img className="p-4" src={bannerImg} alt="" />
-      <h3 className="px-4 text-xl md:text-2xl font-bold leading-normal">
-        {title}
-      </h3>
-      <p className="px-4 text-sm md:text-md leading-tight py-2">{main}</p>
-      <div className="mt-2 p-2 md:p-4 flex gap-2 md:gap-4">
-        <button className="md:mt-10 text-white py-2 px-3 text-sm md:text-lg md:py-2 md:px-4 hover:opacity-85 duration-300 hover:scale-105 font-semibold rounded-3xl bg-[#465697]">
-          Demo
-        </button>
-        <button className="md:mt-10 text-white py-2 px-3 text-sm md:text-lg md:py-2 md:px-4 hover:opacity-85 duration-300 hover:scale-105 font-semibold rounded-3xl bg-[#465697]">
-          Source Code
-        </button>
-      </div>
-    </div>
-  );
-};
+import React from 'react'
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
-export default ProjectCard;
+const ProjectCard = ({ project, index }) => {
+  return (
+    <motion.div
+      className="bg-[#1e293b] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out"
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="p-4 pb-2">
+        <img
+          src={project.imageUrl}
+          alt={project.title}
+          className="w-full h-48 object-cover rounded-lg"
+        />
+      </div>
+      <div className="p-4 pt-2">
+        <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
+        <p className="text-gray-300 mb-4">{project.description}</p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.techStack.map((tech, techIndex) => (
+            <span key={techIndex} className="px-2 py-1 bg-[#2d3a6d] text-gray-200 text-sm rounded-full">
+              {tech}
+            </span>
+          ))}
+        </div>
+        <div className="flex justify-between items-center mt-4">
+          <a
+            href={project.githubLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-4 py-2 bg-[#2d3a6d] hover:bg-[#3a4d8a] text-white rounded-lg transition-colors duration-300"
+          >
+            <FaGithub className="mr-2" />
+            Code
+          </a>
+          {index !== 0 && (
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors duration-300"
+            >
+              <FaExternalLinkAlt className="mr-2" />
+              Demo
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+export default ProjectCard

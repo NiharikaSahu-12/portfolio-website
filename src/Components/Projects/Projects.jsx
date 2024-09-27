@@ -1,26 +1,50 @@
-import React from "react";
-import ProjectCard from "./ProjectCard";
+import React from 'react'
+import ProjectCard from './ProjectCard'; 
+import portfolioImage from "../../assets/Projects Images/portfolio.png"
+
+
+const projects = [
+  {
+    title: "Portfolio Website",
+    description: "A web app built with React and TailwindCSS that allows users to manage tasks effectively.",
+    techStack: ["React", "TailwindCSS", "Node.js"],
+    imageUrl: portfolioImage,
+    githubLink: "https://github.com/username/project-one",
+  },
+  {
+    title: "E-commerce Platform",
+    description: "An online store that provides a seamless shopping experience for users.",
+    techStack: ["Next.js", "TailwindCSS", "MongoDB"],
+    imageUrl: "/placeholder.svg?height=250&width=400",
+    liveLink: "https://example.com",
+    githubLink: "https://github.com/username/project-two",
+  },
+  {
+    title: "Weather App",
+    description: "A real-time weather application with location-based forecasts.",
+    techStack: ["React Native", "Redux", "OpenWeatherMap API"],
+    imageUrl: "/placeholder.svg?height=250&width=400",
+    liveLink: "https://example.com",
+    githubLink: "https://github.com/username/project-three",
+  }
+]
+
 
 const Projects = () => {
   return (
-    <div id="Projects" className="p-10 md:p-24 text-white ">
-      <h1 className="text-2xl md:text-4xl text-white font-bold">Projects</h1>
-      <div className="py-12 px-8 flex flex-wrap gap-5">
-        <ProjectCard
-          title="Blogging Website"
-          main="this is a bloggin website created in next js and used some component library used some component library"
-        />
-        <ProjectCard
-          title="Youtue Clone"
-          main="this is a bloggin website created in next js and used some component library used some component library"
-        />
-        <ProjectCard
-          title="Netflix Clone"
-          main="this is a blogging website created this ijsdjf l in next js and used some component library used some component library"
-        />
+    <section id="Projects" className="py-20 px-20 bg-[#111827] min-h-screen" >
+      <div className="container mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center mb-12 text-white">
+          My Projects
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} project={project} index={index} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
-};
+    </section>
+  )
+}
 
-export default Projects;
+export default Projects

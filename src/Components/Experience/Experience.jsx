@@ -4,8 +4,8 @@ import Artronaut_logo from "../../assets/atronaut.png";
 
 const Experience = () => {
   return (
-    <div id="Experience" className="p-10 md:p-24 bg-slate-900">
-      <h1 className="text-4xl md:text-5xl text-white font-bold mb-24 text-center">Experience</h1>
+    <div id="Experience" className="p-10 md:p-24 bg-slate-800 min-h-screen">
+      <h1 className="text-4xl md:text-5xl text-white font-bold mb-24 text-center">My Experience</h1>
       <div className="flex flex-col lg:flex-row gap-8">
         <ExperienceCard
           logo={Allora_logo}
@@ -46,9 +46,9 @@ const ExperienceCard = ({ logo, alt, title, date, responsibilities }) => {
           <p className="text-sm text-gray-400">{date}</p>
         </div>
       </div>
-      <ul className="list-disc list-inside text-sm text-white space-y-2 mt-4">
+      <ul className="list-disc list-outside pl-5 text-sm text-white space-y-2 mt-4">
         {responsibilities.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={index} className="pl-1">{item}</li>
         ))}
       </ul>
     </div>
