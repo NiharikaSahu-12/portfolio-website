@@ -55,15 +55,21 @@ const Contact = () => {
             <ul className="text-sm md:text-lg space-y-2">
               <li className="flex items-center">
                 <MdOutlineEmail size={20} className="mr-2" />
-                <a href="mailto:sahuniharika1211@gmail.com" className="text-[#465697] hover:underline transition duration-300">sahuniharika1211@gmail.com</a>
+                <a href="mailto:niharikasahu1299@gmail.com" className="text-[#465697] hover:underline transition duration-300" title="Send an email to sahuniharika1211@gmail.com">
+                  niharikasahu1299@gmail.com
+                </a>
               </li>
               <li className="flex items-center">
                 <CiLinkedin size={20} className="mr-2" />
-                <a href="https://linkedin.com/in/username" target="_blank" rel="noopener noreferrer" className="text-[#465697] hover:underline transition duration-300">linkedin.com/in/niharikasahu12</a>
+                <a href="https://linkedin.com/in/niharikasahu12" target="_blank" rel="noopener noreferrer" className="text-[#465697] hover:underline transition duration-300">
+                  linkedin.com/in/niharikasahu12
+                </a>
               </li>
               <li className="flex items-center">
                 <FaGithub size={20} className="mr-2" />
-                <a href="https://github.com/username" target="_blank" rel="noopener noreferrer" className="text-[#465697] hover:underline transition duration-300">github.com/NiharikaSahu-12</a>
+                <a href="https://github.com/NiharikaSahu-12" target="_blank" rel="noopener noreferrer" className="text-[#465697] hover:underline transition duration-300">
+                  github.com/NiharikaSahu-12
+                </a>
               </li>
             </ul>
           </div>
@@ -71,7 +77,7 @@ const Contact = () => {
 
         {/* Footer Section */}
         <footer className="mt-8 w-full border-t border-gray-300 pt-4 text-center text-sm text-gray-600">
-        <p className="text-xs md:text-sm mt-2">&copy; {new Date().getFullYear()} Niharika Sahu. Made with 💖.</p>
+        <p className="text-xs md:text-sm mt-2">&copy; {new Date().getFullYear()} Made with 💜 by Niharika Sahu.</p>
         </footer>
       </div>
     </div>

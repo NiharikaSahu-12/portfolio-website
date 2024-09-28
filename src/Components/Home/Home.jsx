@@ -9,22 +9,22 @@ export default function Home() {
     <div className="text-white flex flex-col md:flex-row min-h-screen justify-between items-center p-4 md:p-20 pt-24 md:pt-32">
       <div className="md:w-2/4 md:pt-10 text-center md:text-left">
         <h1 className="text-3xl md:text-6xl font-bold flex flex-col md:flex-row leading-normal tracking-tighter mb-4">
-          Hey, I'm Niharika Sahu!
+          Hi, I'm Niharika Sahu!
         </h1>
         <h2 className="text-xl md:text-3xl font-semibold text-[#465697] mb-4">
           <TextChange />
         </h2>
-        <p className="text-sm md:text-xl tracking-tight mt-4 mb-6">
+        <p className="text-sm md:text-xl tracking-tight mt-4 mb-2">
           Passionate about crafting beautiful, responsive, and user-friendly web experiences.
           Always eager to discover new technologies, I quickly adapt and thrive, constantly expanding my expertise.
         </p>
-        <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
+        {/* <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
           {["React", "JavaScript", "HTML5", "CSS3", "Tailwind", "Node.js"].map((skill) => (
             <span key={skill} className="bg-[#465697] text-white px-3 py-1 rounded-full text-sm">
               {skill}
             </span>
           ))}
-        </div>
+        </div> */}
         <div className="flex gap-4 justify-center md:justify-start">
           <a
             href="https://github.com/NiharikaSahu-12" 
