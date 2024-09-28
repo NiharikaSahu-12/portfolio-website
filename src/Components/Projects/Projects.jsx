@@ -1,38 +1,31 @@
 import React from 'react'
 import ProjectCard from './ProjectCard'; 
 import portfolioImage from "../../assets/Projects Images/portfolio.png"
+import noteAppImage from "../../assets/Projects Images/note_app.png"
 
 
 const projects = [
   {
     title: "Portfolio Website",
-    description: "A web app built with React and TailwindCSS that allows users to manage tasks effectively.",
-    techStack: ["React", "TailwindCSS", "Node.js"],
+    description: "A sleek portfolio website built with React and TailwindCSS, showcasing my projects and skills. It features an intuitive layout and responsive design for easy navigation, allowing visitors to explore my work and connect with me seamlessly",
+    techStack: ["React", "TailwindCSS"],
     imageUrl: portfolioImage,
-    githubLink: "https://github.com/username/project-one",
+    githubLink: "https://github.com/NiharikaSahu-12/portfolio-website",
   },
   {
-    title: "E-commerce Platform",
-    description: "An online store that provides a seamless shopping experience for users.",
-    techStack: ["Next.js", "TailwindCSS", "MongoDB"],
-    imageUrl: "/placeholder.svg?height=250&width=400",
-    liveLink: "https://example.com",
-    githubLink: "https://github.com/username/project-two",
-  },
-  {
-    title: "Weather App",
-    description: "A real-time weather application with location-based forecasts.",
-    techStack: ["React Native", "Redux", "OpenWeatherMap API"],
-    imageUrl: "/placeholder.svg?height=250&width=400",
-    liveLink: "https://example.com",
-    githubLink: "https://github.com/username/project-three",
+    title: "Simple Note App",
+    description: "A note-taking application that allows users to effortlessly create, edit, and categorize their notes. Designed with a clean interface for a seamless user experience.",
+    techStack: ["HTML", "CSS", "JavaScript", "Quill.js", "LocalStorage"],
+    imageUrl: noteAppImage,
+    liveLink: "https://niharikasahu-12.github.io/notes-app/",
+    githubLink: "https://github.com/NiharikaSahu-12/notes-app",
   }
 ]
 
 
 const Projects = () => {
   return (
-    <section id="Projects" className="py-20 px-20 bg-slate-800 min-h-screen" >
+    <section id="Projects" className="py-24 px-20 bg-slate-800 min-h-screen" >
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 text-white">
           My Projects
