@@ -6,4 +6,8 @@ export default defineConfig({
   base: process.env.NODE_ENV === 'production' && process.env.DEPLOY_PLATFORM === 'github' 
     ? '/portfolio-website/' // Base path for GitHub Pages
     : '/', // Base path for other environments like Netlify
+  define: {
+    // Expose process.env for compatibility
+    'process.env': process.env,
+  },
 });
