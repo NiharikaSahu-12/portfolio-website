@@ -2,6 +2,7 @@ import React from 'react'
 import ProjectCard from './ProjectCard'; 
 import portfolioImage from "../../assets/Projects Images/portfolio.png"
 import noteAppImage from "../../assets/Projects Images/note_app.png"
+import foodiesImage from "../../assets/Projects Images/foodies.png"
 
 
 const projects = [
@@ -19,6 +20,14 @@ const projects = [
     imageUrl: noteAppImage,
     liveLink: "https://niharikasahu-12.github.io/notes-app/",
     githubLink: "https://github.com/NiharikaSahu-12/notes-app",
+  },
+  {
+    title: "Foodies--Recipe App",
+    description: "A food recipes app to show your favorite recipes according to categories, areas and recipe name. Also included dark mode.",
+    techStack: ["Reactjs", "TailwindCSS", "ContextAPI","Vite"],
+    imageUrl: foodiesImage,
+    liveLink: "",
+    githubLink: "https://github.com/NiharikaSahu-12/foodies",
   }
 ]
 

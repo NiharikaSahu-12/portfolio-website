@@ -12,7 +12,7 @@ const Contact = () => {
           I would love to hear from you! Please fill out the form below to get in touch.
         </p>
 
-        <div className="flex w-full space-x-8">
+        <div className="flex w-full space-x-20">
           {/* Contact Form */}
           <form className="w-full max-w-lg bg-white shadow-lg rounded-lg p-8 space-y-4 border border-gray-300 flex-1">
             <div>
@@ -50,9 +50,9 @@ const Contact = () => {
           </form>
 
           {/* Links Section */}
-          <div className="flex flex-col w-full max-w-xs">
+          <div className="flex flex-col w-full max-w-xs py-20">
             <p className="text-xl font-semibold mb-4">Connect with me:</p>
-            <ul className="text-sm md:text-lg space-y-2">
+            <ul className="text-sm md:text-lg space-y-4">
               <li className="flex items-center">
                 <MdOutlineEmail size={20} className="mr-2" />
                 <a href="mailto:niharikasahu1299@gmail.com" className="text-[#465697] hover:underline transition duration-300" title="Send an email to sahuniharika1211@gmail.com">
@@ -76,8 +76,8 @@ const Contact = () => {
         </div>
 
         {/* Footer Section */}
-        <footer className="mt-8 w-full border-t border-gray-300 pt-4 text-center text-sm text-gray-600">
-        <p className="text-xs md:text-sm mt-2">&copy; {new Date().getFullYear()} Made with 💜 by Niharika Sahu.</p>
+        <footer className="mt-8 w-full border-t border-gray-400 pt-10 text-center text-sm text-gray-000">
+        <p className="text-xs md:text-sm mt-2">&copy; 2024 Made with 💜 by Niharika Sahu.</p>
         </footer>
       </div>
     </div>
