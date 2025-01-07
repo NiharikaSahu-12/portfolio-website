@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <div className="text-white flex flex-col md:flex-row min-h-screen justify-between items-center p-4 md:p-20 pt-24 md:pt-32">
       <div className="md:w-2/4 md:pt-10 text-center md:text-left">
-        <h1 className="text-3xl md:text-6xl font-bold flex flex-col md:flex-row leading-normal tracking-tighter mb-4">
-          Hi, I'm Niharika Sahu!
+        <h1 className="text-3xl md:text-5xl flex flex-col md:flex-row leading-normal tracking-tighter mb-4">
+          Hello, I'm Niharika Sahu!
         </h1>
         <h2 className="text-xl md:text-3xl font-semibold text-[#465697] mb-4">
           <TextChange />
@@ -19,7 +19,7 @@ export default function Home() {
           Always eager to discover new technologies, I quickly adapt and thrive, constantly expanding my expertise.
         </p>
         {/* <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
-          {["React", "JavaScript", "HTML5", "CSS3", "Tailwind", "Node.js"].map((skill) => (
+          {["HTML5", "CSS3", "JavaScript", "React", "Tailwind", "Node.js"].map((skill) => (
             <span key={skill} className="bg-[#465697] text-white px-3 py-1 rounded-full text-sm">
               {skill}
             </span>
