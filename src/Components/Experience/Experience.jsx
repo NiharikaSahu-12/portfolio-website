@@ -1,57 +1,117 @@
-import React from "react";
-import Allora_logo from "../../assets/allora.png";
-import Artronaut_logo from "../../assets/atronaut.png";
+import { experience } from "../../data/content";
+import Reveal from "../ui/Reveal";
+import SectionHeading from "../ui/SectionHeading";
 
 const Experience = () => {
   return (
-    <div id="Experience" className="p-10 md:p-24 bg-slate-800 min-h-screen">
-      <h1 className="text-4xl md:text-5xl text-white font-bold mb-24 text-center">My Experience</h1>
-      <div className="flex flex-col lg:flex-row gap-8">
-        <ExperienceCard
-          logo={Allora_logo}
-          alt="Allorasoft Logo"
-          title="Frontend Developer, Allorasoft Pvt. Ltd"
-          date="Oct 2023 - Present"
-          responsibilities={[
-            "Developed and maintained responsive web applications using React.js and Tailwind CSS, resulting in a 25% increase in user engagement.",
-            "Optimized application performance, improving load times by 40%",
-            "Integrated RESTful APIs to fetch and display dynamic content from MongoDB and MySQL databases",
-            "Actively participated in code reviews, providing constructive feedback to improve team code quality",
-            "Participated in daily stand-up meetings and weekly sprint planning sessions",
-          ]}
-        />
-        <ExperienceCard
-          logo={Artronaut_logo}
-          alt="Artronaut Logo"
-          title="Frontend Developer Intern, Artronaut Creatives LLP"
-          date="Feb 2023 - April 2023"
-          responsibilities={[
-            "Assisted in developing and maintaining responsive web pages using HTML5, CSS3, and JavaScript.",
-            "Collaborated with senior developers to implement new features for the company's main product",
-            "Gained hands-on experience with different frameworks and executed it in projects",
-          ]}
-        />
+    <section
+      id="experience"
+      className="relative overflow-hidden bg-forest py-section text-cream"
+    >
+      {/* ---------- Backdrop ---------- */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="bg-grid-forest absolute inset-0" />
+        <div className="absolute -left-32 top-1/4 h-[26rem] w-[26rem] rounded-full bg-radial-gold opacity-70 blur-2xl" />
+        <div className="absolute -right-40 bottom-0 h-[30rem] w-[30rem] rounded-full bg-radial-clay opacity-60 blur-2xl" />
       </div>
-    </div>
-  );
-};
 
-const ExperienceCard = ({ logo, alt, title, date, responsibilities }) => {
-  return (
-    <div className="flex-1 bg-slate-950 bg-opacity-45 rounded-2xl p-6 flex flex-col shadow-lg shadow-slate-800">
-      <div className="flex items-center mb-4">
-        <img src={logo} alt={alt} className="w-16 h-16 object-contain mr-4" />
-        <div>
-          <h2 className="text-white text-lg font-semibold">{title}</h2>
-          <p className="text-sm text-gray-400">{date}</p>
+      <div className="section-shell relative">
+        <SectionHeading
+          tone="dark"
+          eyebrow="Where I've worked"
+          title="My"
+          accent="Experience"
+          description="Two teams, one continuous focus on the frontend — building interfaces that load fast and feel considered."
+        />
+
+        {/* ---------- Timeline ---------- */}
+        <div className="relative mx-auto max-w-4xl">
+          {/* Rail */}
+          <span
+            aria-hidden="true"
+            className="absolute bottom-4 left-[7px] top-2 w-px bg-gradient-to-b from-gold/60 via-cream/20 to-transparent md:left-[9px]"
+          />
+
+          <ol className="space-y-10">
+            {experience.map((job, i) => (
+              <Reveal
+                as="li"
+                key={job.company}
+                delay={i * 0.1}
+                distance={30}
+                className="relative pl-10 md:pl-14"
+              >
+                {/* Marker */}
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-2 flex h-4 w-4 items-center justify-center md:h-5 md:w-5"
+                >
+                  {job.current && (
+                    <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-gold/70" />
+                  )}
+                  <span
+                    className={`relative inline-flex h-2.5 w-2.5 rotate-45 rounded-[2px] md:h-3 md:w-3 ${
+                      job.current ? "bg-gold" : "bg-cream/45"
+                    }`}
+                  />
+                </span>
+
+                <article
+                  className={`card card-hover border-cream/10 bg-cream/[0.045] p-6 backdrop-blur-sm md:p-8 ${
+                    job.current ? "ring-1 ring-gold/25" : ""
+                  }`}
+                >
+                  <header className="flex flex-wrap items-start justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-card bg-cream p-1.5 shadow-warm">
+                        <img
+                          src={job.logo}
+                          alt={job.alt}
+                          width="60"
+                          height="60"
+                          loading="lazy"
+                          className="h-full w-full object-contain"
+                        />
+                      </span>
+                      <div>
+                        <h3 className="font-display text-xl font-semibold leading-tight text-cream md:text-2xl">
+                          {job.role}
+                        </h3>
+                        <p className="mt-1 text-sm text-gold">{job.company}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col items-start gap-2 sm:items-end">
+                      <time className="rounded-full border border-cream/20 bg-forestDeep/60 px-3.5 py-1.5 font-mono text-[0.66rem] uppercase tracking-[0.12em] text-cream/75">
+                        {job.date}
+                      </time>
+                      {job.current && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-gold/15 px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-gold">
+                          <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                          Present
+                        </span>
+                      )}
+                    </div>
+                  </header>
+
+                  <ul className="mt-6 space-y-3 border-t border-cream/10 pt-6">
+                    {job.responsibilities.map((item) => (
+                      <li key={item} className="flex gap-3.5 text-sm leading-relaxed text-cream/70">
+                        <span
+                          aria-hidden="true"
+                          className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rotate-45 rounded-[1px] bg-clay"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </div>
-      <ul className="list-disc list-outside pl-5 text-sm text-white space-y-2 mt-4">
-        {responsibilities.map((item, index) => (
-          <li key={index} className="pl-1">{item}</li>
-        ))}
-      </ul>
-    </div>
+    </section>
   );
 };
 

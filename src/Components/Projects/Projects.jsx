@@ -1,52 +1,51 @@
-import React from 'react'
-import ProjectCard from './ProjectCard'; 
-import portfolioImage from "../../assets/Projects Images/portfolio.png"
-import noteAppImage from "../../assets/Projects Images/note_app.png"
-import foodiesImage from "../../assets/Projects Images/foodies.png"
-
-
-const projects = [
-  {
-    title: "Portfolio Website",
-    description: "A sleek portfolio website built with React and TailwindCSS, showcasing my projects and skills. It features an intuitive layout and responsive design for easy navigation, allowing visitors to explore my work and connect with me seamlessly",
-    techStack: ["React", "TailwindCSS"],
-    imageUrl: portfolioImage,
-    githubLink: "https://github.com/NiharikaSahu-12/portfolio-website",
-  },
-  {
-    title: "Simple Note App",
-    description: "A note-taking application that allows users to effortlessly create, edit, and categorize their notes. Designed with a clean interface for a seamless user experience.",
-    techStack: ["HTML", "CSS", "JavaScript", "Quill.js", "LocalStorage"],
-    imageUrl: noteAppImage,
-    liveLink: "https://niharikasahu-12.github.io/notes-app/",
-    githubLink: "https://github.com/NiharikaSahu-12/notes-app",
-  },
-  {
-    title: "Foodies--Recipe App",
-    description: "A food recipes app to show your favorite recipes according to categories, areas and recipe name. Also included dark mode.",
-    techStack: ["Reactjs", "TailwindCSS", "ContextAPI","Vite"],
-    imageUrl: foodiesImage,
-    liveLink: "",
-    githubLink: "https://github.com/NiharikaSahu-12/foodies",
-  }
-]
-
+import { projects } from "../../data/content";
+import SectionHeading from "../ui/SectionHeading";
+import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
   return (
-    <section id="Projects" className="py-24 px-20 bg-slate-800 min-h-screen" >
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 text-white">
-          My Projects
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section id="projects" className="relative overflow-hidden bg-paper py-section">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-16 bottom-16 select-none font-display text-[14rem] leading-none text-ink/[0.03] md:text-[22rem]"
+      >
+        &#9670;
+      </span>
+
+      <div className="section-shell relative">
+        <SectionHeading
+          eyebrow="Selected work"
+          title="My"
+          accent="Projects"
+          description="A few things I've designed and built end to end — from recipe browsers to note-taking tools."
+        />
+
+        <div className="grid gap-7 lg:grid-cols-2">
           {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <ProjectCard
+              key={project.title}
+              project={project}
+              index={index}
+              featured={index === 0}
+            />
           ))}
         </div>
+
+        <p className="mt-12 text-center text-sm text-inkMute">
+          More experiments live on{" "}
+          <a
+            href="https://github.com/NiharikaSahu-12"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-clay underline decoration-clay/30 underline-offset-4 transition-colors duration-300 hover:decoration-clay"
+          >
+            GitHub
+          </a>
+          .
+        </p>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

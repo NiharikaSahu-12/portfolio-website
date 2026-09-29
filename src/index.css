@@ -2,7 +2,202 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  scroll-behavior: smooth;
-  font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  * {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    /* Offset anchor targets so the fixed navbar never covers headings */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-cream font-body text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    font-variation-settings: "SOFT" 22, "WONK" 1;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Fraunces italic reads warmer with the "wonk" axis engaged */
+  .font-display em,
+  em.font-display {
+    font-variation-settings: "SOFT" 40, "WONK" 1;
+  }
+
+  ::selection {
+    background-color: #c1502e;
+    color: #fbf6ee;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-clay ring-offset-2 ring-offset-cream;
+    border-radius: 4px;
+  }
+
+  /* Warm scrollbar */
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f3ebdc;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbbfa9;
+    border: 3px solid #f3ebdc;
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c1502e;
+  }
+}
+
+/* ============================================================
+   Components
+   ============================================================ */
+@layer components {
+  /* Eyebrow label used above every section heading */
+  .section-label {
+    @apply font-mono text-[0.7rem] font-medium uppercase text-clay;
+    letter-spacing: 0.22em;
+  }
+
+  .section-shell {
+    @apply mx-auto w-full max-w-content px-gutter;
+  }
+
+  /* Buttons: pair the base with one variant, e.g. class="btn btn-primary" */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-6 py-3
+           font-body text-sm font-semibold tracking-tight
+           transition-all duration-300 ease-soft
+           disabled:pointer-events-none disabled:opacity-55;
+  }
+
+  .btn-primary {
+    @apply bg-clay text-cream shadow-clay
+           hover:-translate-y-0.5 hover:bg-clayDark hover:shadow-clay-lg
+           active:translate-y-0;
+  }
+
+  .btn-ghost {
+    @apply border border-ink/20 bg-transparent text-ink
+           hover:-translate-y-0.5 hover:border-clay hover:bg-clay/5 hover:text-clay
+           active:translate-y-0;
+  }
+
+  .btn-light {
+    @apply border border-cream/25 bg-cream/10 text-cream backdrop-blur-sm
+           hover:-translate-y-0.5 hover:border-gold hover:bg-cream/20 hover:text-gold
+           active:translate-y-0;
+  }
+
+  /* Card surface */
+  .card {
+    @apply rounded-panel border border-ink/10 bg-shell shadow-warm
+           transition-all duration-500 ease-soft;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:border-clay/30 hover:shadow-warm-lg;
+  }
+
+  /* Small pill used for tech-stack tags */
+  .tag {
+    @apply inline-flex items-center rounded-full border border-ink/15 bg-paper
+           px-3 py-1 font-mono text-[0.68rem] uppercase tracking-wider text-inkSoft
+           transition-colors duration-300;
+  }
+
+  /* Hairline rule with a centred diamond */
+  .rule-ornament {
+    @apply relative h-px w-full bg-ink/10;
+  }
+  .rule-ornament::after {
+    content: "";
+    @apply absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2
+           rotate-45 bg-clay/60;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+@layer utilities {
+  /* Fine paper grain laid over the whole page for a printed feel */
+  .grain-overlay::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.42;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.34'/%3E%3C/svg%3E");
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Gradient-masked marquee edges */
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+  }
+
+  .bg-radial-gold {
+    background-image: radial-gradient(circle at 50% 50%, rgba(227, 168, 87, 0.22), transparent 68%);
+  }
+
+  .bg-radial-clay {
+    background-image: radial-gradient(circle at 50% 50%, rgba(193, 80, 46, 0.18), transparent 68%);
+  }
+
+  /* Subtle ruled-paper lines for the hero backdrop */
+  .bg-ruled {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 39px,
+      rgba(43, 38, 32, 0.045) 39px,
+      rgba(43, 38, 32, 0.045) 40px
+    );
+  }
+
+  .bg-grid-forest {
+    background-image: linear-gradient(rgba(251, 246, 238, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(251, 246, 238, 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+}
+
+/* ============================================================
+   Reduced motion — honour the OS preference everywhere
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
