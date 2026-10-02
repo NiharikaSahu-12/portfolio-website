@@ -1,32 +1,41 @@
-import { useId } from "react";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { FiMail } from "react-icons/fi";
+import { FaGithub, FaLinkedinIn, FaReact } from "react-icons/fa";
+import { LuArrowDown, LuArrowUpRight } from "react-icons/lu";
 
 import avatarImg from "../../assets/home.png";
-import { profile, socials } from "../../data/profile";
+import { skillCategories, stats } from "../../data/content";
+import {
+  profile,
+  roles,
+  socials,
+  yearsOfExperience,
+} from "../../data/profile";
+import { useGithubProjects } from "../../hooks/useGithubProjects";
+import Marquee from "../ui/Marquee";
 import Reveal from "../ui/Reveal";
 import TextChange from "../TextChange";
 
-const MARQUEE_ITEMS = [
-  "React",
-  "Tailwind CSS",
-  "JavaScript",
-  "TypeScript",
-  "HTML5",
-  "CSS3",
-  "Git",
-  "Node.js",
-  "Vite",
-  "REST APIs",
-];
+/**
+ * The ticker reads straight from the skills data, so adding a skill in
+ * `content.js` updates the hero too — nothing to keep in sync by hand.
+ */
+const MARQUEE_ITEMS = skillCategories.flatMap((category) =>
+  category.skills.map((skill) => skill.name)
+);
 
 export default function Home() {
-  const sealId = useId();
+  const years = yearsOfExperience();
+  const { projects } = useGithubProjects();
+
+  const quickStats = [
+    { value: `${years}+`, label: "Years experience" },
+    { value: projects.length, label: "Selected projects" },
+    { value: stats.skillCount, label: "Technologies" },
+  ];
 
   return (
     <section
       id="home"
-      className="relative min-h-screen overflow-hidden bg-cream pb-28 pt-32 md:pb-32 md:pt-40"
+      className="relative min-h-screen overflow-hidden bg-cream pb-20 pt-28 md:pb-24 md:pt-32"
     >
       {/* ---------- Backdrop ---------- */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -37,177 +46,228 @@ export default function Home() {
       </div>
 
       {/* ---------- Content ---------- */}
-      <div className="section-shell relative z-10 grid items-center gap-14 lg:grid-cols-[1.12fr_0.88fr] lg:gap-10">
-        {/* Text column */}
-        <div className="order-2 text-center lg:order-1 lg:text-left">
+      <div className="section-shell relative z-10 grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:gap-10">
+        {/* ---------- Masthead column ---------- */}
+        <div className="order-1 text-center lg:order-1 lg:text-left">
           <Reveal direction="none" duration={0.5}>
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-ink/10 bg-shell/80 py-1.5 pl-2 pr-4 shadow-warm backdrop-blur-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-sage" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-sage" />
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2.5 lg:justify-start">
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-ink/10 bg-shell/80 py-1.5 pl-2 pr-4 shadow-warm backdrop-blur-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-sage" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-sage" />
+                </span>
+                <span className="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-inkSoft">
+                  {profile.status}
+                </span>
               </span>
-              <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-inkSoft">
+              <span className="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-inkMute">
                 {profile.location}
               </span>
-            </span>
+            </div>
           </Reveal>
 
           <Reveal delay={0.08}>
-            <p className="section-label mt-7 block">Hello, I&rsquo;m</p>
-            <h1 className="text-display-lg mt-3 font-bold">
-              {profile.firstName}{" "}
-              <em className="text-clay">Sahu</em>
+            <p className="section-label mt-8 block">Hello, I&rsquo;m</p>
+            <h1 className="text-display-xl mt-3 font-bold">
+              {profile.firstName} <em className="text-clay">Sahu</em>
             </h1>
           </Reveal>
 
           <Reveal delay={0.16}>
-            <div className="mt-5 flex items-center justify-center gap-3.5 lg:justify-start">
+            <div className="mt-6 flex items-center justify-center gap-3.5 lg:justify-start">
               <span aria-hidden="true" className="h-px w-10 shrink-0 bg-clay/40" />
               <p className="min-h-[1.9em] font-display text-lg italic text-forest md:text-2xl">
-                <TextChange />
+                <TextChange roles={roles} />
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={0.24}>
-            <p className="mx-auto mt-7 max-w-prose text-base leading-relaxed text-inkSoft md:text-[1.075rem] lg:mx-0">
-              I craft beautiful, responsive, and user-friendly web experiences
-              with a keen eye for detail. Always eager to discover new
-              technologies, I adapt quickly and thrive on turning ideas into
-              interfaces people love.
+            <p className="mx-auto mt-7 max-w-prose text-base leading-relaxed text-inkSoft md:text-[1.05rem] lg:mx-0">
+              I build beautiful, responsive and genuinely fast web experiences —
+              and sweat the details most people scroll past. I care about
+              accessible markup, sensible performance budgets and interfaces
+              that feel considered from the first paint.
             </p>
           </Reveal>
 
           <Reveal delay={0.32}>
-            <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
-              <a href="#projects" className="btn btn-primary group w-full sm:w-auto">
+            <div className="mt-9 flex flex-nowrap items-center justify-center gap-1.5 sm:gap-3 lg:justify-start">
+              <a
+                href="#projects"
+                className="btn btn-primary group shrink-0 gap-1.5 px-2.5 py-2 text-[0.68rem] sm:gap-2.5 sm:px-5 sm:py-3 sm:text-sm"
+              >
                 View my work
-                <span
+                <LuArrowUpRight
+                  size={13}
                   aria-hidden="true"
-                  className="transition-transform duration-300 ease-soft group-hover:translate-x-1"
-                >
-                  &rarr;
-                </span>
+                  className="transition-transform duration-300 ease-soft group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </a>
-              <a href="#contact" className="btn btn-ghost w-full sm:w-auto">
+              <a
+                href="#contact"
+                className="btn btn-ghost shrink-0 px-2.5 py-2 text-[0.68rem] sm:px-5 sm:py-3 sm:text-sm"
+              >
                 Get in touch
               </a>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.4} direction="none">
-            <div className="mt-9 flex items-center justify-center gap-3 lg:justify-start">
               {[
                 { href: socials.github, label: "GitHub", Icon: FaGithub },
                 { href: socials.linkedin, label: "LinkedIn", Icon: FaLinkedinIn },
-                { href: `mailto:${profile.email}`, label: "Email", Icon: FiMail },
               ].map(({ href, label, Icon }) => (
                 <a
                   key={label}
                   href={href}
-                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/10 bg-shell text-inkSoft shadow-warm transition-all duration-300 ease-soft hover:-translate-y-1 hover:border-clay/40 hover:text-clay hover:shadow-warm-md"
+                  className="icon-btn h-8 w-8 shrink-0 sm:h-11 sm:w-11"
                 >
-                  <Icon size={17} />
+                  <Icon size={15} aria-hidden="true" />
                 </a>
               ))}
             </div>
           </Reveal>
+
+          <Reveal delay={0.4} direction="none">
+            <ul className="mx-auto mt-8 grid max-w-sm grid-cols-3 gap-px overflow-hidden rounded-card border border-ink/10 bg-ink/10 lg:mx-0">
+              {quickStats.map((stat) => (
+                <li key={stat.label} className="bg-cream/85 px-3 py-3.5">
+                  <span className="block font-display text-xl font-bold leading-none text-ink md:text-2xl">
+                    {stat.value}
+                  </span>
+                  <span className="mt-2 block font-mono text-[0.53rem] uppercase leading-tight tracking-[0.14em] text-inkMute">
+                    {stat.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
 
-        {/* Portrait column */}
+        {/* ---------- Profile portrait ---------- */}
         <Reveal
           direction="left"
-          delay={0.2}
-          distance={40}
-          duration={0.9}
-          className="order-1 flex justify-center lg:order-2 lg:justify-end"
+          delay={0.18}
+          distance={32}
+          duration={0.8}
+          className="order-2 flex justify-center lg:order-2 lg:justify-end"
         >
-          <div className="relative w-full max-w-[19rem] md:max-w-[23rem]">
-            {/* Offset frame */}
+          <div className="relative w-full max-w-[18rem] sm:max-w-[21rem] lg:max-w-[27rem]">
             <div
               aria-hidden="true"
-              className="absolute -inset-3 -rotate-3 rounded-t-[999px] rounded-b-panel border border-clay/25 bg-clay/5"
+              className="absolute -inset-5 bg-gradient-to-br from-gold/35 via-transparent to-clay/20 blur-2xl"
+              style={{
+                clipPath:
+                  "polygon(19% 0, 83% 3%, 100% 24%, 94% 77%, 73% 100%, 17% 94%, 0 68%, 6% 21%)",
+              }}
             />
             <div
-              aria-hidden="true"
-              className="absolute -inset-3 rotate-2 rounded-t-[999px] rounded-b-panel border border-gold/30 bg-gold/5"
-            />
-
-            <div className="relative overflow-hidden rounded-t-[999px] rounded-b-panel border-4 border-shell bg-paper shadow-warm-xl">
-              <img
-                src={avatarImg}
-                alt={`${profile.name}, Frontend Developer`}
-                width="500"
-                height="500"
-                className="aspect-square w-full object-cover transition-transform duration-[1.2s] ease-soft hover:scale-[1.045]"
+              className="group relative isolate aspect-[4/5] overflow-hidden bg-gradient-to-br from-shell via-paper to-linen shadow-warm-xl"
+              style={{
+                clipPath:
+                  "polygon(19% 0, 83% 3%, 100% 24%, 94% 77%, 73% 100%, 17% 94%, 0 68%, 6% 21%)",
+              }}
+            >
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 opacity-55"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(rgb(43 38 32 / 0.12) 1px, transparent 1px)",
+                  backgroundSize: "20px 20px",
+                }}
               />
               <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-forest/25 via-transparent to-transparent"
+                className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gold/25 blur-3xl"
               />
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-20 -left-16 h-64 w-64 rounded-full bg-clay/15 blur-3xl"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-[5%] border border-cream/75"
+                style={{
+                  clipPath:
+                    "polygon(17% 0, 83% 4%, 100% 23%, 93% 76%, 74% 100%, 17% 94%, 0 68%, 6% 22%)",
+                }}
+              />
+
+              <img
+                src={avatarImg}
+                alt={`Illustrated portrait of ${profile.name}, ${profile.role}`}
+                width="500"
+                height="500"
+                loading="eager"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-contain object-bottom px-3 pb-2 pt-5 transition-transform duration-700 ease-soft group-hover:scale-[1.025] sm:px-5 sm:pb-3 sm:pt-7"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-forest/20 to-transparent"
+              />
+
+              <div
+                className="absolute left-[12%] top-[11%] inline-flex -rotate-3 items-center gap-2 border border-cream/70 bg-shell/90 px-3 py-2 shadow-warm backdrop-blur-md"
+                style={{
+                  clipPath: "polygon(0 0, 100% 8%, 96% 100%, 4% 92%)",
+                }}
+              >
+                <FaReact className="text-clay" size={15} aria-hidden="true" />
+                <span className="font-mono text-[0.58rem] uppercase tracking-[0.14em] text-inkSoft">
+                  Building with React
+                </span>
+              </div>
+
+              <div
+                className="absolute bottom-[13%] left-[12%] right-[12%] flex items-end justify-between gap-3 border-l-2 border-gold bg-forest/90 px-4 py-3 text-cream shadow-warm-lg backdrop-blur-md sm:px-5 sm:py-4"
+                style={{
+                  clipPath: "polygon(0 0, 100% 7%, 96% 100%, 0 92%)",
+                }}
+              >
+                <div className="min-w-0">
+                  <p className="font-display text-lg font-semibold leading-tight sm:text-xl">
+                    {profile.name}
+                  </p>
+                  <p className="mt-1 truncate font-mono text-[0.58rem] uppercase tracking-[0.14em] text-cream/70">
+                    {profile.role} · {profile.location}
+                  </p>
+                </div>
+                <span
+                  aria-label={profile.status}
+                  className="mb-1 flex h-2.5 w-2.5 shrink-0 rounded-full bg-sage ring-4 ring-sage/20"
+                />
+              </div>
             </div>
 
-            {/* Rotating seal */}
-            <div className="absolute -bottom-6 -left-6 h-24 w-24 md:h-28 md:w-28">
-              <div className="animate-spin-slow absolute inset-0">
-                <svg viewBox="0 0 100 100" className="h-full w-full" aria-hidden="true">
-                  <defs>
-                    <path
-                      id={`${sealId}-circle`}
-                      d="M50,50 m-36,0 a36,36 0 1,1 72,0 a36,36 0 1,1 -72,0"
-                    />
-                  </defs>
-                  <circle cx="50" cy="50" r="48" className="fill-forest" />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="48"
-                    className="fill-none stroke-gold/40"
-                    strokeWidth="1"
-                  />
-                  <text className="fill-cream font-mono text-[8.1px] uppercase tracking-[0.2em]">
-                    <textPath href={`#${sealId}-circle`}>
-                      Frontend Developer • UI Craftsperson •
-                    </textPath>
-                  </text>
-                </svg>
-              </div>
-              <span className="absolute inset-0 flex items-center justify-center font-display text-xl font-bold text-gold">
-                NS
-              </span>
-            </div>
+            <span
+              className="absolute -right-3 top-[38%] hidden rotate-6 items-center justify-center bg-clay px-3 py-2 font-display text-lg font-semibold text-cream shadow-warm sm:flex"
+              style={{
+                clipPath: "polygon(14% 0, 100% 12%, 86% 100%, 0 88%)",
+              }}
+            >
+              {profile.initials}
+            </span>
           </div>
         </Reveal>
       </div>
 
-      {/* ---------- Tech marquee ---------- */}
+      {/* ---------- Scroll cue ---------- */}
+      <div
+        aria-hidden="true"
+        className="absolute bottom-24 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2.5 lg:flex"
+      >
+        <span className="font-mono text-[0.53rem] uppercase tracking-[0.3em] text-inkMute">
+          Scroll
+        </span>
+        <span className="h-9 w-px bg-gradient-to-b from-ink/25 to-transparent" />
+        <LuArrowDown size={12} className="animate-bob text-clay" />
+      </div>
+
+      {/* ---------- Tech ticker ---------- */}
       <div className="absolute inset-x-0 bottom-0 border-y border-ink/10 bg-paper/60 py-3.5 backdrop-blur-sm">
-        <div className="mask-fade-x overflow-hidden">
-          <div
-            className="flex w-max animate-marquee items-center gap-8 will-change-transform"
-            aria-hidden="true"
-          >
-            {[0, 1].map((copy) => (
-              <div key={copy} className="flex items-center gap-8">
-                {MARQUEE_ITEMS.map((item) => (
-                  <span
-                    key={`${copy}-${item}`}
-                    className="flex items-center gap-8 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-inkMute"
-                  >
-                    {item}
-                    <span className="text-clay/50">&#9670;</span>
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-        <p className="sr-only">
-          Technologies: {MARQUEE_ITEMS.join(", ")}.
-        </p>
+        <Marquee items={MARQUEE_ITEMS} />
       </div>
     </section>
   );

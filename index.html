@@ -2,33 +2,98 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#FBF6EE" />
+
+    <title>Niharika Sahu — Frontend Developer</title>
     <meta
       name="description"
-      content="Niharika Sahu — Frontend Developer crafting warm, editorial-style web experiences with React and Tailwind CSS."
+      content="Niharika Sahu — Frontend Developer in Mumbai building fast, accessible, editorial-style web interfaces with React, TypeScript and Tailwind CSS. See selected projects, services and experience."
     />
     <meta name="author" content="Niharika Sahu" />
+    <meta name="keywords" content="Niharika Sahu, Frontend Developer, React Developer, Tailwind CSS, TypeScript, Mumbai, Web Accessibility, UI Engineer" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#FBF6EE" />
+    <meta name="color-scheme" content="light" />
+    <link rel="canonical" href="https://niharikasahu-12.github.io/portfolio-website/" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/favicon.svg" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Niharika Sahu — Portfolio" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:url" content="https://niharikasahu-12.github.io/portfolio-website/" />
     <meta property="og:title" content="Niharika Sahu — Frontend Developer" />
     <meta
       property="og:description"
-      content="Frontend Developer crafting warm, editorial-style web experiences with React and Tailwind CSS."
+      content="Frontend Developer building fast, accessible, editorial-style web interfaces with React, TypeScript and Tailwind CSS."
+    />
+    <!-- TODO: add a 1200×630 social card and point both image tags at it, e.g.
+         <meta property="og:image" content="https://…/og-image.png" /> -->
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Niharika Sahu — Frontend Developer" />
+    <meta
+      name="twitter:description"
+      content="Frontend Developer building fast, accessible, editorial-style web interfaces with React, TypeScript and Tailwind CSS."
     />
 
+    <!-- Fonts: preconnect early, swap so text paints immediately -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Manrope:wght@400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <title>Niharika Sahu — Frontend Developer</title>
+
+    <!-- Structured data: helps search engines render a rich result -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Niharika Sahu",
+        "jobTitle": "Frontend Developer",
+        "url": "https://niharikasahu-12.github.io/portfolio-website/",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mumbai",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://github.com/NiharikaSahu-12",
+          "https://linkedin.com/in/niharikasahu12"
+        ],
+        "knowsAbout": [
+          "React",
+          "JavaScript",
+          "TypeScript",
+          "Tailwind CSS",
+          "HTML5",
+          "CSS3",
+          "Responsive Web Design",
+          "Web Accessibility",
+          "REST APIs"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <noscript>
+      <div style="max-width: 34rem; margin: 12vh auto; padding: 0 1.5rem; font-family: system-ui, sans-serif; line-height: 1.6; color: #2b2620">
+        <h1 style="font-size: 1.6rem; margin-bottom: 0.75rem">Niharika Sahu — Frontend Developer</h1>
+        <p>
+          This portfolio is an interactive React app, so it needs JavaScript
+          enabled. In the meantime, you can reach me directly at
+          <a href="mailto:niharikasahu1299@gmail.com" style="color: #c1502e">niharikasahu1299@gmail.com</a>
+          or find my work on
+          <a href="https://github.com/NiharikaSahu-12" style="color: #c1502e">GitHub</a>.
+        </p>
+      </div>
+    </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+

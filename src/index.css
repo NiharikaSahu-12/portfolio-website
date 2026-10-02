@@ -3,6 +3,39 @@
 @tailwind utilities;
 
 /* ============================================================
+   Design tokens
+   ------------------------------------------------------------
+   Raw RGB channels (not hex) so Tailwind can compose them with an
+   alpha channel: `rgb(var(--c-clay) / <alpha-value>)` in
+   tailwind.config.js. Remapping these values is the *entire*
+   requirement for a new theme — no component needs to change.
+   ============================================================ */
+:root {
+  /* Surfaces */
+  --c-cream: 251 246 238; /* page canvas      */
+  --c-shell: 254 252 248; /* raised cards     */
+  --c-paper: 243 235 220; /* alternate bands  */
+  --c-linen: 234 223 203; /* image wells      */
+
+  /* Text */
+  --c-ink: 43 38 32;
+  --c-ink-soft: 95 85 72;
+  --c-ink-mute: 138 126 110;
+
+  /* Accents */
+  --c-clay: 193 80 46;
+  --c-clay-dark: 158 62 34;
+  --c-clay-soft: 233 169 140;
+  --c-forest: 47 62 70;
+  --c-forest-deep: 33 45 51;
+  --c-sage: 124 152 133;
+  --c-gold: 227 168 87;
+  --c-gold-deep: 184 130 58;
+
+  color-scheme: light;
+}
+
+/* ============================================================
    Base
    ============================================================ */
 @layer base {
@@ -17,7 +50,7 @@
   }
 
   body {
-    @apply bg-cream font-body text-ink antialiased;
+    @apply bg-canvas font-body text-text antialiased;
     text-rendering: optimizeLegibility;
   }
 
@@ -41,8 +74,8 @@
   }
 
   ::selection {
-    background-color: #c1502e;
-    color: #fbf6ee;
+    background-color: rgb(var(--c-clay));
+    color: rgb(var(--c-cream));
   }
 
   :focus-visible {
@@ -50,21 +83,21 @@
     border-radius: 4px;
   }
 
-  /* Warm scrollbar */
+  /* Warm, theme-aware scrollbar */
   ::-webkit-scrollbar {
     width: 11px;
     height: 11px;
   }
   ::-webkit-scrollbar-track {
-    background: #f3ebdc;
+    background: rgb(var(--c-paper));
   }
   ::-webkit-scrollbar-thumb {
-    background: #cbbfa9;
-    border: 3px solid #f3ebdc;
+    background: rgb(var(--c-ink) / 0.22);
+    border: 3px solid rgb(var(--c-paper));
     border-radius: 99px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #c1502e;
+    background: rgb(var(--c-clay));
   }
 }
 
@@ -88,6 +121,19 @@
            font-body text-sm font-semibold tracking-tight
            transition-all duration-300 ease-soft
            disabled:pointer-events-none disabled:opacity-55;
+  }
+
+  /* Size modifiers — prefer these over `!px-4 !py-2` overrides */
+  .btn-sm {
+    @apply gap-2 px-4 py-2 text-[0.8rem];
+  }
+
+  .btn-lg {
+    @apply px-7 py-3.5 text-[0.95rem];
+  }
+
+  .btn-icon {
+    @apply h-11 w-11 shrink-0 p-0;
   }
 
   .btn-primary {
@@ -125,6 +171,70 @@
            transition-colors duration-300;
   }
 
+  /* ---------- New in v2 ---------- */
+
+  /* Frosted surface: navbar, command palette, floating chrome */
+  .glass {
+    @apply border border-ink/10 bg-cream/80 backdrop-blur-xl;
+  }
+
+  /* Round, borderless action button (socials, menu toggle, fab) */
+  .icon-btn {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-full
+           border border-ink/[0.12] bg-shell text-inkSoft shadow-warm
+           transition-all duration-300 ease-soft
+           hover:-translate-y-0.5 hover:border-clay/40 hover:text-clay hover:shadow-warm-md
+           active:translate-y-0;
+  }
+
+  /* The one label style used for metadata everywhere (dates, eyebrows, hints) */
+  .mono-meta {
+    @apply font-mono text-[0.63rem] uppercase text-inkMute;
+    letter-spacing: 0.18em;
+  }
+
+  /* Filter chip — pair with aria-pressed state styling in JSX */
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-ink/15 bg-shell
+           px-4 py-2 font-mono text-[0.66rem] uppercase text-inkSoft
+           transition-all duration-300 ease-soft
+           hover:-translate-y-0.5 hover:border-clay/40 hover:text-clay
+           focus-visible:ring-2 focus-visible:ring-clay/40;
+    letter-spacing: 0.12em;
+  }
+
+  .chip-active {
+    @apply border-clay bg-clay text-cream shadow-clay hover:border-clay hover:text-cream;
+  }
+
+  /* Form controls, shared by every input in the contact form */
+  .field {
+    @apply w-full rounded-card border border-ink/15 bg-cream px-4 py-3 text-sm text-ink
+           outline-none transition-all duration-300 ease-soft
+           placeholder:text-inkMute/70
+           hover:border-ink/25
+           focus:border-clay focus:ring-2 focus:ring-clay/25
+           disabled:opacity-60;
+  }
+
+  .field-invalid {
+    @apply border-clay/70 bg-clay/[0.04] focus:border-clay focus:ring-clay/30;
+  }
+
+  /* Quiet underlined link whose rule grows on hover/focus */
+  .link-quiet {
+    @apply relative font-semibold text-clay transition-colors duration-300;
+  }
+  .link-quiet::after {
+    content: "";
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-left bg-clay/40
+           transition-transform duration-500 ease-soft;
+  }
+  .link-quiet:hover::after,
+  .link-quiet:focus-visible::after {
+    @apply scale-x-100 bg-clay;
+  }
+
   /* Hairline rule with a centred diamond */
   .rule-ornament {
     @apply relative h-px w-full bg-ink/10;
@@ -147,7 +257,7 @@
     inset: 0;
     z-index: 60;
     pointer-events: none;
-    opacity: 0.42;
+    opacity: 0.3;
     mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.34'/%3E%3C/svg%3E");
   }
@@ -163,11 +273,46 @@
   }
 
   .bg-radial-gold {
-    background-image: radial-gradient(circle at 50% 50%, rgba(227, 168, 87, 0.22), transparent 68%);
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      rgb(var(--c-gold) / 0.22),
+      transparent 68%
+    );
   }
 
   .bg-radial-clay {
-    background-image: radial-gradient(circle at 50% 50%, rgba(193, 80, 46, 0.18), transparent 68%);
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      rgb(var(--c-clay) / 0.18),
+      transparent 68%
+    );
+  }
+
+  /* Ink headline that warms towards gold on the last word */
+  .text-gradient-warm {
+    background-image: linear-gradient(
+      100deg,
+      rgb(var(--c-clay)) 0%,
+      rgb(var(--c-clay-dark)) 42%,
+      rgb(var(--c-gold-deep)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Hide scrollbars on horizontal chip rows while keeping them scrollable */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Vertical eyebrow type for the fixed side rail */
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
   }
 
   /* Subtle ruled-paper lines for the hero backdrop */
@@ -199,5 +344,41 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   Print — a résumé-quality fallback
+   ============================================================ */
+@media print {
+  /* Chrome that only makes sense on screen */
+  [data-print="hide"] {
+    display: none !important;
+  }
+
+  .grain-overlay::before {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  section {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
   }
 }

@@ -1,4 +1,5 @@
 import { experience } from "../../data/content";
+import { yearsOfExperience } from "../../data/profile";
 import Reveal from "../ui/Reveal";
 import SectionHeading from "../ui/SectionHeading";
 
@@ -18,9 +19,11 @@ const Experience = () => {
       <div className="section-shell relative">
         <SectionHeading
           tone="dark"
+          index="03"
           eyebrow="Where I've worked"
-          title="My"
-          accent="Experience"
+          title="Where I've"
+          accent="worked"
+          meta={`${experience.length} roles · ${yearsOfExperience()}+ years`}
           description="Two teams, one continuous focus on the frontend — building interfaces that load fast and feel considered."
         />
 
@@ -57,24 +60,31 @@ const Experience = () => {
                 </span>
 
                 <article
-                  className={`card card-hover border-cream/10 bg-cream/[0.045] p-6 backdrop-blur-sm md:p-8 ${
+                  className={`card card-hover border-cream/10 bg-cream/[0.045] p-5 backdrop-blur-sm md:p-7 ${
                     job.current ? "ring-1 ring-gold/25" : ""
                   }`}
                 >
                   <header className="flex flex-wrap items-start justify-between gap-4">
                     <div className="flex items-center gap-4">
-                      <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-card bg-cream p-1.5 shadow-warm">
+                      <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-card border border-cream/10 bg-cream p-2 shadow-warm">
                         <img
                           src={job.logo}
                           alt={job.alt}
                           width="60"
                           height="60"
                           loading="lazy"
+                          decoding="async"
                           className="h-full w-full object-contain"
                         />
                       </span>
                       <div>
-                        <h3 className="font-display text-xl font-semibold leading-tight text-cream md:text-2xl">
+                        <span
+                          aria-hidden="true"
+                          className="font-mono text-[0.58rem] uppercase tracking-[0.2em] text-cream/35"
+                        >
+                          {i === 0 ? "Most recent" : `Role 0${i + 1}`}
+                        </span>
+                        <h3 className="mt-1.5 font-display text-xl font-semibold leading-tight text-cream md:text-2xl">
                           {job.role}
                         </h3>
                         <p className="mt-1 text-sm text-gold">{job.company}</p>
